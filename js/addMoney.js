@@ -1,52 +1,77 @@
+// add money section start
 document
   .getElementById("addMoneyBtn")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    let amount = document.getElementById("amount").value;
-    let convertedAmount = parseFloat(amount);
-    let pin = document.getElementById("pin").value;
-    let convertedPin = parseFloat(pin);
-    let mainBlance = document.getElementById("mainBlance").innerText;
-    let convertedmainBlance = parseFloat(mainBlance);
 
-    if (amount && pin) {
-      if (convertedPin === 1234) {
-        let sum = convertedmainBlance + convertedAmount;
-        document.getElementById("mainBlance").innerText = sum;
+    let amount = parseFloat(getInputValueById("amount"));
+    let pin = parseInt(getInputValueById("pin"));
+    let accountNumber = getInputValueById("accountNumber");
+    let mainBalance = getInnerTextById("mainBlance");
+    let selectedBank = document.getElementById("allBank").value;
+
+    if (amount < 0) {
+      alert("Type positive number");
+      return;
+    }
+
+    if (accountNumber.length === 11) {
+      if (pin.toString().length === 4) {
+        // Update main balance
+        setInnerTextById("mainBlance", mainBalance + amount);
+
+        // Log transaction
+        let transactionsContainer = document.getElementById(
+          "transactionsContainer"
+        );
+
+        let div = document.createElement("div");
+        div.innerHTML = `
+        <h1>Added amount from this number: ${accountNumber}</H1>
+        <p>Added mooney from this: ${selectedBank} Bank</P>
+        <p>Added mooney: ${amount} TK</P>
+        `;
+        transactionsContainer.appendChild(div);
+      } else {
+        alert("Incorrect PIN");
       }
     } else {
-      alert("Please type your valid pin");
+      alert("Invalid phone number");
     }
   });
+// add money section end
 
+// cash out money section start
 document
   .getElementById("withdrawMoneyBtn")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    let amount = document.getElementById("cashoutAmount").value;
-    let convertedAmount = parseFloat(amount);
-    let pin = document.getElementById("cashoutPin").value;
-    let convertedPin = parseFloat(pin);
-    let mainBlance = document.getElementById("mainBlance").innerText;
-    let convertedmainBlance = parseFloat(mainBlance);
 
-    if (amount && pin) {
-      if (convertedPin === 1234) {
-        let minus = convertedmainBlance - convertedAmount;
-        document.getElementById("mainBlance").innerText = minus;
+    let cashoutAmount = parseFloat(getInputValueById("cashoutAmount"));
+    let cashoutPin = parseInt(getInputValueById("cashoutPin"));
+    let cashoutAccountNumber = getInputValueById("cashoutAccountNumber");
+    let mainBalance = getInnerTextById("mainBlance");
+
+    if (mainBalance < cashoutAmount) {
+      alert("Invalid cash out amount");
+      return;
+    }
+    if (cashoutAccountNumber.length === 11) {
+      if (cashoutPin.toString().length === 4) {
+        setInnerTextById("mainBlance", mainBalance - cashoutAmount);
+        // Log transaction
+        let transactionsContainer = document.getElementById(
+          "transactionsContainer"
+        );
+
+        let p = document.createElement("p");
+        p.innerText = `Cashout ${cashoutAmount} from this ${cashoutAccountNumber} account`;
+        transactionsContainer.appendChild(p);
+      } else {
+        alert("Incorrect PIN");
       }
     } else {
-      alert("Please type your valid pin");
+      alert("Invalid phone number");
     }
   });
-
-document.getElementById("cashout").style.display = "none";
-document.getElementById("addMoneyBox").addEventListener("click", function () {
-  document.getElementById("addMoney").style.display = "block";
-});
-
-document.getElementById("cashoutBox").addEventListener("click", function () {
-  console.log("cashoutBoxhaha");
-  document.getElementById("cashout").style.display = "block";
-  document.getElementById("addMoney").style.display = "none";
-});
+// cash out money section end

@@ -29,8 +29,8 @@
           <div class="flex justify-between items-center">
             <img src="images/Group.png" alt="" />
             <div>
-              <h2 class="font-extrabold text-[18px] pb-[6px]">
-                $ <span id="mainBlance">45000</span>
+              <h2 class="font-extrabold text-[30px] pb-[6px]">
+                $ <span id="mainBlance">4500</span>
               </h2>
               <h3 class="text-[14px]">Available Balances</h3>
             </div>
@@ -42,8 +42,8 @@
             <button
               class="border-2 border-[#0808081A] rounded-lg px-[12px] py-[10px]"
             >
-              <i class="fa-solid fa-arrow-right-from-bracket pr-[5px]"></i> Log
-              Out
+              <i class="fa-solid fa-arrow-right-from-bracket pr-[5px]"></i>
+              Log Out
             </button>
           </div>
           <!-- button end -->
@@ -81,16 +81,18 @@
               </div>
               <h3 class="text-[#080808B3] text-[14px] pt-[10px]">Cashout</h3>
             </div>
-             <!-- card 3 start -->
+            <!-- card 3 start -->
             <div
               class="place-items-center text-center px-[15px] py-[10px] border-2 border-[#0808081A] rounded-lg"
             >
               <div class="">
                 <img src="images/money 1.png" alt="" />
               </div>
-              <h3 class="text-[#080808B3] text-[14px] pt-[10px]">Transfer Money</h3>
+              <h3 class="text-[#080808B3] text-[14px] pt-[10px]">
+                Transfer Money
+              </h3>
             </div>
-            
+
             <!-- card 5 start -->
             <div
               class="place-items-center text-center px-[15px] py-[10px] border-2 border-[#0808081A] rounded-lg"
@@ -111,12 +113,15 @@
             </div>
             <!-- card 6 start -->
             <div
+              id="transactionsBox"
               class="place-items-center text-center px-[15px] py-[10px] border-2 border-[#0808081A] rounded-lg"
             >
               <div class="">
                 <img src="images/transaction 1.png" alt="" />
               </div>
-              <h3 class="text-[#080808B3] text-[14px] px-[15px] pt-[10px]">Transactions</h3>
+              <h3 class="text-[#080808B3] text-[14px] px-[15px] pt-[10px]">
+                Transactions
+              </h3>
             </div>
           </div>
         </div>
@@ -124,15 +129,15 @@
 
       <!-- add money section start -->
       <section id="addMoney">
-        <div class="bg-[#F4F5F7] mt-[50px]">
-          <h2 class="pt-[50px]">Add Money</h2>
+        <div class="bg-[#F4F5F7] mt-[50px] pb-[50px] rounded-md">
+          <h2 class="pt-[50px] pl-[20px] font-bold text-[20px]">Add Money</h2>
 
           <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="card bg-slate-50">
               <form class="card-body">
                 <div class="form-control">
                   <legend class="pb-[5px]">Select A Bank</legend>
-                  <select class="select select-bordered">
+                  <select id="allBank" class="select select-bordered">
                     <option disabled selected>Select back</option>
                     <option>Nagad</option>
                     <option>Bkash</option>
@@ -177,7 +182,7 @@
                 <div class="form-control mt-6">
                   <button
                     id="addMoneyBtn"
-                    class="btn btn-primary rounded-full font-semibold text-[20px]"
+                    class="btn btn-primary rounded-full font-semibold text-white text-[20px]"
                   >
                     Add Money
                   </button>
@@ -192,8 +197,8 @@
 
       <!-- cash out money section start -->
       <section id="cashout">
-        <div class="bg-[#F4F5F7] mt-[50px]">
-          <h2 class="pt-[50px]">Cash Out</h2>
+        <div class="bg-[#F4F5F7] mt-[50px] pb-[50px] rounded-md">
+          <h2 class="pt-[50px] pl-[20px] font-bold text-[20px]">Cash Out</h2>
 
           <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="card bg-slate-50">
@@ -203,7 +208,6 @@
                     <span class="label-text">Agent Number</span>
                   </label>
                   <input
-                    value="01644938683"
                     id="cashoutAccountNumber"
                     type="number"
                     placeholder="Enter 11 digit number"
@@ -227,7 +231,6 @@
                     <span class="label-text">Pin Number</span>
                   </label>
                   <input
-                    value="1234"
                     id="cashoutPin"
                     type="number"
                     placeholder="Enter 4 Digit Pin"
@@ -238,7 +241,7 @@
                 <div class="form-control mt-6">
                   <button
                     id="withdrawMoneyBtn"
-                    class="btn btn-primary rounded-full font-semibold text-[20px]"
+                    class="btn btn-primary rounded-full font-semibold text-white text-[20px]"
                   >
                     Withdraw Money
                   </button>
@@ -250,12 +253,24 @@
       </section>
       <!-- cash out money section end -->
 
+      <!-- transactions section start -->
+      <section id="transactions">
+        <h1 class="font-bold text-[40px] text-center py-[30px]">
+          Transactions
+        </h1>
+
+        <div id="transactionsContainer"></div>
+      </section>
+      <!-- transactions section end -->
+
       <!-- main section end -->
     </section>
 
     <!-- java script link start -->
+    <script src="/js/script.js"></script>
     <script src="/js/addMoney.js"></script>
-    <script src="js/withdrawMoney.js"></script>
+    <script src="js/utilites.js"></script>
+    <script src="js/toggle.js"></script>
     <!-- java script link end -->
   </body>
 </html>
